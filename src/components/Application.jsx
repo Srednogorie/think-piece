@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {auth, firestore} from '../firebase';
+import {auth, createUserDocument, firestore} from '../firebase';
 
 import Posts from './Posts';
 import {collectIdsAndData} from "../utilities";
@@ -22,7 +22,9 @@ class Application extends Component {
       const posts = snapshot.docs.map(collectIdsAndData);
       this.setState({ posts });
     });
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      const user = await createUserDocument(userAuth);
+      console.log(user);
       this.setState({ user });
     });
   };
