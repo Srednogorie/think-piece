@@ -5,10 +5,13 @@ import PostsProvider from './providers/PostProvider';
 import './index.scss';
 
 import Application from './components/Application';
+import UserProvider from "./providers/UserProvider";
 
 render(
-    <PostsProvider>
-        <Application />
-    </PostsProvider>,
+    <UserProvider>
+        <PostsProvider>
+            <Application />
+        </PostsProvider>
+    </UserProvider>,
     document.getElementById('root')
 );
