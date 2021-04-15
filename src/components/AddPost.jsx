@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {auth, firestore} from "../firebase";
-import firebase from "firebase";
 
 class AddPost extends Component {
   state = { title: '', content: '' };
